@@ -45,11 +45,10 @@ class JSONSettings:
 			
 	def get_token(self):
 		#Check to make sure token is present
-		if (not ('discord_token' in self.parsed_stats)):
+		if (not ('discord_token' in self.parsed_settings)):
 			print ("Invalid 'settings.JSON' file. Please delete the file, and restart application.")
 			time.sleep(3)
 			sys.exit()
-		print (self.parsed_settings)
 		if (not self.parsed_settings['discord_token']):
 			print ("Please enter a discord bot token in 'settings.JSON' before running")
 			time.sleep(3)

@@ -51,6 +51,8 @@ async def on_ready():
 
 #============[Run Client]============
 
+print("Logging in to bot...")
+
 #Run client (connect and login) ~ Blocking (must be last) ~ This is an unabstracted version of client.run() to give more control
 try:
     client.loop.run_until_complete(client.start(settings.get_token()))
