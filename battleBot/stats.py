@@ -29,18 +29,30 @@ class JSONStats:
 
 
 	def stats_chk(self):
-		#Generate credential and blacklist JSON files on start-up if not present
+		#Generate empty JSON file on start-up if not present
 		if not os.path.exists(self.stats_path):
 			print("No stats file found. Generating a new statistic JSON file...")
 			#Defining keys for the JSON file, as well as configuring default values
-			default_json = """{"discord_token": ""}
+			default_json = """{}
 					   """
 			parsed_json = json.loads(default_json)
 			self.write_stats(parsed_json)
 			
 			print("A new empty stats file has been generated.")
 
-			
+	def generate_player_stats(self, player):
+		self.parsed_stats[player.id] = {"Name": player.name,
+									"Health": 10.0,
+									"Max Health": 10.0}
+		
+		
+	def set_stat(self, player, stat, value):
+		if (player.id in self.parsed_stats):
+			(self.parsed_stats[player.id]) [stat] = value
+		else:
+			generate_player_stats(player)
+		
+		
 	def get_player_stats(self, player): #TODO
 		pass
 

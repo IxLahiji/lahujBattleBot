@@ -42,6 +42,9 @@ async def wakeup():
 client.loop.create_task(wakeup())
 
 
+
+
+
 #============[Executed at Startup]============
 
 #on_ready event, typically on login
