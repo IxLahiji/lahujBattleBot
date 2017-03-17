@@ -49,7 +49,7 @@ client.loop.create_task(wakeup())
 async def on_message(message):
 
     if message.content[0] == "!":
-        comm = Command(message)
+        comm = Command(message, stats)
         comm_code = comm.run_command()
     else:
         comm_code = NOT_COMMAND
