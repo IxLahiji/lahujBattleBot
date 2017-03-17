@@ -6,6 +6,7 @@ import os.path
 from battleBot.settings import JSONSettings
 from battleBot.stats import JSONStats
 from battleBot.command import Command
+from battleBot.timed_command import Timed_Command
 
 
 SUCCESS = 0
@@ -18,10 +19,9 @@ INVALID_ARGUMENTS = 4
 prog_path = os.path.dirname(os.path.abspath(__file__))
 
 #Load information
+time_commands = Timed_Command()
 settings = JSONSettings(prog_path)
 stats = JSONStats(prog_path)
-timed_commands = []
-timed_list_mutex = Lock()
 
 #Create new discord client
 client = discord.Client()
