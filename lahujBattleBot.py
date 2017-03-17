@@ -2,12 +2,10 @@
 
 import discord
 import asyncio
-import json
 import os.path
-import sys
-import time
 from battleBot.settings import JSONSettings
 from battleBot.stats import JSONStats
+from battleBot.command import Command
 
 
 SUCCESS = 0
@@ -22,6 +20,8 @@ prog_path = os.path.dirname(os.path.abspath(__file__))
 #Load information
 settings = JSONSettings(prog_path)
 stats = JSONStats(prog_path)
+timed_commands = []
+timed_list_mutex = Lock()
 
 #Create new discord client
 client = discord.Client()
@@ -42,7 +42,26 @@ async def wakeup():
 client.loop.create_task(wakeup())
 
 
+#============[Events]============
 
+#The events that are triggered when a message is sent
+@client.event
+async def on_message(message):
+
+    if message.content[0] == "!":
+        comm = Command(message)
+        comm_code = comm.run_command()
+    else:
+        comm_code = NOT_COMMAND
+
+    if (comm_code != SUCCESS) and (comm_code != NOT_COMMAND):
+        if comm_code == NO_PERM_ERR:
+            print("Command failed ~ User lacks adequate permissions")    
+        
+        if comm_code == NO_ARG_ERR:
+            print("Command failed ~ User did not enter an argument.")
+        
+        print("_________________________")
 
 
 #============[Executed at Startup]============
@@ -51,6 +70,7 @@ client.loop.create_task(wakeup())
 @client.event
 async def on_ready():
     print('Logged in as: ' + client.user.name + '[' + client.user.id + '].')
+
 
 #============[Run Client]============
 

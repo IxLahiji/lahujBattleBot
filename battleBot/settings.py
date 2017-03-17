@@ -3,6 +3,7 @@ import os.path
 import sys
 import time
 
+
 class JSONSettings:
 
 	settings_path = ""
