@@ -53,10 +53,14 @@ class JSONStats:
         else:
             generate_player_stats(player)
         
-        
-    def get_player_stats(self, user): #TODO
-        if (user.id in self.parsed_stats.keys()):
-            return self.parsed_stats[user.id]
+    
+    def has_stats(self, player):
+        return (not (self.get_player_stats(player) is None))
+    
+    
+    def get_player_stats(self, player): #TODO
+        if (player.id in self.parsed_stats.keys()):
+            return self.parsed_stats[player.id]
         else:
             return None
         
