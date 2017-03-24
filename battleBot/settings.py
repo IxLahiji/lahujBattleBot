@@ -8,13 +8,15 @@ class JSONSettings:
 
 
     def __init__(self, program_path):
+        #create settings reader, and check to make sure it exists
         self.settings = JSONReaderWriter(program_path + os.path.sep + 'settings.JSON')
         self.settings_chk()
+        #read settings in loaded json file
         self.parsed_settings = self.read_settings()
 
 
     def settings_chk(self):
-        #Generate credential and blacklist JSON files on startup if not present
+        #Generate settings json if not present
         if not settings.exists():
             print("No settings file found. Generating a new settings JSON file...")
             #Defining keys for the JSON file, as well as configuring default values
