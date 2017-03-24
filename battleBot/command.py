@@ -1,13 +1,13 @@
 import discord
 import asyncio
-
+from battleBot.return_codes import *
 
 class Command:
 
     command_list = {
     }
     
-    def __init__(self, message, stats):
+    def __init__(self, message, bot_info):
         split_command = message.content.split(" ")
         self.message_obj = message
         self.command_id = split_command[0][1:]
@@ -18,7 +18,8 @@ class Command:
         self.author = message.author
         self.timestamp = message.timestamp
         self.target_date_time = None
-        self.curr_stats = stats
+        self.bot_info = bot_info
+        self.curr_stats = bot_info['stats']
         if (message.channel.is_private == False):
             self.roles = [role.name for role in self.author.roles]
     
@@ -28,9 +29,8 @@ class Command:
             return self.args[0:numArgs]
     
     
-    @staticmethod
-    async def pm_player(player, message):
-        await client.send_message(player, message)
+    async def pm_player(self, player, message):
+        await self.bot_info['client'].send_message(player, message)
     
     
     def register_user(self):
@@ -46,6 +46,9 @@ class Command:
         else:
             print("User not registered!")
     
+    
+    def get_leaderboard(self):
+        pass
     
     #Dictionary of functions, allows for modularity in "run_command"
     command_list = {

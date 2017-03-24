@@ -26,6 +26,11 @@ stats = JSONStats(prog_path)
 #Create new discord client
 client = discord.Client()
 
+bot_info = {
+"settings":settings,
+"stats":stats,
+"client":client
+}
 
 #============[KeyboardInterrupt Handling]============
 
@@ -49,7 +54,7 @@ client.loop.create_task(wakeup())
 async def on_message(message):
 
     if message.content[0] == "!":
-        comm = Command(message, stats)
+        comm = Command(message, bot_info)
         comm_code = comm.run_command()
     else:
         comm_code = NOT_COMMAND
