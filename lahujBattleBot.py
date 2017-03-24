@@ -83,7 +83,12 @@ print("Logging in to bot...")
 
 #Run client (connect and login) ~ Blocking (must be last) ~ This is an unabstracted version of client.run() to give more control
 try:
-    client.loop.run_until_complete(client.start(settings.get_token()))
+    if (not settings.get_setting('discord_token')):
+        print ("Please enter a discord bot token in 'settings.JSON' before running")
+        time.sleep(3)
+        sys.exit()
+    else:
+        client.loop.run_until_complete(client.start(settings.get_setting('discord_token')))
     
 except KeyboardInterrupt:
     #Set exit flag to allow wakeup() to close properly
