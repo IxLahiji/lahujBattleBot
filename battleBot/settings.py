@@ -16,6 +16,8 @@ class JSONSettings:
             self.parsed_settings = self.settings.read()
         except:
             print ("Error: Invalid settings file. Please either fix or delete the JSON file!")
+            time.sleep(3)
+            sys.exit()
 
 
     def settings_chk(self):

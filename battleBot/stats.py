@@ -1,5 +1,6 @@
 import os.path
 import sys
+import time
 from .json_ops import JSONReaderWriter
 
 
@@ -14,7 +15,9 @@ class JSONStats:
         try:
             self.parsed_stats = self.stats.read()
         except:
-            print ("Error: Invalid settings file. Please either fix or delete the JSON file!")
+            print ("Error: Invalid stats file. Please either fix or delete the JSON file!")
+            time.sleep(3)
+            sys.exit()
     
     
     def stats_chk(self):
