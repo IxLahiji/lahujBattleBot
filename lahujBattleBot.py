@@ -59,14 +59,11 @@ async def on_message(message):
     else:
         comm_code = NOT_COMMAND
 
-    if (comm_code != SUCCESS) and (comm_code != NOT_COMMAND):
-        if comm_code == NO_PERM_ERR:
-            print("Command failed ~ User lacks adequate permissions")    
-        
-        if comm_code == NO_ARG_ERR:
-            print("Command failed ~ User did not enter an argument.")
-        
-        print("_________________________")
+    if (comm_code == NO_PERM_ERR):
+        print('Command "' + comm.command_id + '" failed ~ User lacks adequate permissions')    
+    
+    if (comm_code == NO_ARG_ERR):
+        print('Command "' + comm.command_id + '" failed ~ User did not enter an argument.')
 
 
 #============[Executed at Startup]============

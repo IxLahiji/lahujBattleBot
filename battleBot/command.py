@@ -60,7 +60,9 @@ class Command:
     def run_command(self):
         #make sure command is a real command and is enabled
         if (self.command_id in self.command_list):
+            print("_________________________")
             print("Command issued: " + self.command_id)
+            print("_________________________")
             command_function = self.command_list[self.command_id]
             return command_function(self)
         else:
