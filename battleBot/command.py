@@ -53,8 +53,8 @@ class Command:
         formatted_string = "``` --------LEADERBOARD--------\n"
         for stats in leaderboard:
             formatted_string += "\n" + self.stats_to_string(stats) + "\n"
-            formatted_string += "---------------------------\n```"
-        
+            formatted_string += "---------------------------\n"
+        formatted_string += "```"
         
         asyncio.ensure_future(self.pm_player(self.author, formatted_string))
     

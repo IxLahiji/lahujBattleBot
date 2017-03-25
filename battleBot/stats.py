@@ -38,7 +38,13 @@ class JSONStats:
         self.parsed_stats[player.id] = {"ID": player.id,
                                     "Level": 1,
                                     "Health": 10.0,
-                                    "Max Health": 10.0}
+                                    "Max Health": 10.0,
+                                    "Attack": 1.0,
+                                    "M. Attack": 1.0,
+                                    "Defense": 1.0,
+                                    "M. Defense": 1.0,
+                                    "Experience": 0.0,
+                                    "Experience Needed": 10.0}
         self.stats.write(self.parsed_stats)
         
         
