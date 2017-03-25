@@ -1,7 +1,6 @@
 import os.path
 import sys
 import time
-import json
 from .json_ops import JSONReaderWriter
 
 
@@ -13,10 +12,14 @@ class JSONSettings:
         self.settings = JSONReaderWriter(program_path + os.path.sep + 'settings.JSON')
         self.settings_chk()
         #read settings in loaded json file
-        self.parsed_settings = self.settings.read()
+        try:
+            self.parsed_settings = self.settings.read()
+        except:
+            print ("Error: Invalid settings file. Please either fix or delete the JSON file!")
 
 
     def settings_chk(self):
+        import json
         #Generate settings json if not present
         if not self.settings.exists():
             print("No settings file found. Generating a new settings JSON file...")

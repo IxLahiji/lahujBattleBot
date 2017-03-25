@@ -1,6 +1,5 @@
 import os.path
 import sys
-import json
 from .json_ops import JSONReaderWriter
 
 
@@ -12,10 +11,14 @@ class JSONStats:
         self.stats = JSONReaderWriter(program_path + os.path.sep + 'stats.JSON')
         self.stats_chk()
         #read settings in loaded json file
-        self.parsed_stats = self.stats.read()
+        try:
+            self.parsed_stats = self.stats.read()
+        except:
+            print ("Error: Invalid settings file. Please either fix or delete the JSON file!")
     
     
     def stats_chk(self):
+        import json
         #Generate empty JSON file on start-up if not present
         if not self.stats.exists():
             print("No stats file found. Generating a new statistic JSON file...")
