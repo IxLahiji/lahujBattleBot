@@ -35,7 +35,7 @@ class JSONStats:
 
     def generate_player_stats(self, player):
         print ("Creating stats for new user " + player.name)
-        self.parsed_stats[player.id] = {"Name": player.name,
+        self.parsed_stats[player.id] = {"ID": player.id,
                                     "Level": 1,
                                     "Health": 10.0,
                                     "Max Health": 10.0}
@@ -54,7 +54,7 @@ class JSONStats:
         return (not (self.get_player_stats(player) is None))
     
     
-    def get_player_stats(self, player): #TODO
+    def get_player_stats(self, player):
         if (player.id in self.parsed_stats.keys()):
             return self.parsed_stats[player.id]
         else:

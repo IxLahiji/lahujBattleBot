@@ -42,13 +42,31 @@ class Command:
     
     def get_stats(self):
         if (self.curr_stats.has_stats(self.author)):
-            asyncio.ensure_future(self.pm_player(self.author, self.curr_stats.get_player_stats(self.author)))
+            formatted_string = "```" + self.stats_to_string(self.curr_stats.get_player_stats(self.author)) + "```"
+            asyncio.ensure_future(self.pm_player(self.author, formatted_string))
         else:
             print("User not registered!")
     
     
     def get_leaderboard(self):
-        asyncio.ensure_future(self.pm_player(self.author, self.curr_stats.get_leaderboard()))
+        leaderboard = self.curr_stats.get_leaderboard()
+        formatted_string = "``` --------LEADERBOARD--------\n"
+        for stats in leaderboard:
+            formatted_string += "\n" + self.stats_to_string(stats) + "\n"
+            formatted_string += "---------------------------\n```"
+        
+        
+        asyncio.ensure_future(self.pm_player(self.author, formatted_string))
+    
+    def stats_to_string(self, player_stats):
+        player_name = self.message_obj.server.get_member(player_stats['ID']).name
+        nick_name = (self.message_obj.server.get_member(player_stats['ID']).nick or player_name)
+        formatted_string = "Player Name: " + player_name + "\n"
+        formatted_string += "Player Nickname: " + nick_name + "\n"
+        for key in player_stats.keys():
+            if (key != "ID"):
+                formatted_string += "\t" + key + ": " + str(player_stats[key]) + "\n"
+        return formatted_string
     
     
     #Dictionary of functions, allows for modularity in "run_command"
