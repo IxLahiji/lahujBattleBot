@@ -48,12 +48,14 @@ class Command:
     
     
     def get_leaderboard(self):
-        pass
+        asyncio.ensure_future(self.pm_player(self.author, self.curr_stats.get_leaderboard()))
+    
     
     #Dictionary of functions, allows for modularity in "run_command"
     command_list = {
         "register" : register_user,
-        "stats" : get_stats
+        "stats" : get_stats,
+        "leaderboard" : get_leaderboard
     }
     
     

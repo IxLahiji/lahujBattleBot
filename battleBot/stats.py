@@ -36,6 +36,7 @@ class JSONStats:
     def generate_player_stats(self, player):
         print ("Creating stats for new user " + player.name)
         self.parsed_stats[player.id] = {"Name": player.name,
+                                    "Level": 1,
                                     "Health": 10.0,
                                     "Max Health": 10.0}
         self.stats.write(self.parsed_stats)
@@ -47,7 +48,7 @@ class JSONStats:
             self.stats.write(self.parsed_stats)
         else:
             generate_player_stats(player)
-        
+    
     
     def has_stats(self, player):
         return (not (self.get_player_stats(player) is None))
@@ -58,6 +59,12 @@ class JSONStats:
             return self.parsed_stats[player.id]
         else:
             return None
-        
-
+    
+    
+    def get_leaderboard(self):
+        temp_list = sorted(self.parsed_stats, key=lambda k:self.parsed_stats[k]['Level'], reverse=True)
+        if (len(temp_list) < 3):
+            return [self.parsed_stats[k] for k in temp_list]
+        else:
+            return [self.parsed_stats[k] for k in temp_list[:3]]
 
