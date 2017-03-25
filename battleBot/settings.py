@@ -1,7 +1,8 @@
-import json
 import os.path
 import sys
 import time
+import json
+from .json_ops import JSONReaderWriter
 
 
 class JSONSettings:
@@ -12,12 +13,12 @@ class JSONSettings:
         self.settings = JSONReaderWriter(program_path + os.path.sep + 'settings.JSON')
         self.settings_chk()
         #read settings in loaded json file
-        self.parsed_settings = self.read_settings()
+        self.parsed_settings = self.settings.read()
 
 
     def settings_chk(self):
         #Generate settings json if not present
-        if not settings.exists():
+        if not self.settings.exists():
             print("No settings file found. Generating a new settings JSON file...")
             #Defining keys for the JSON file, as well as configuring default values
             default_json = """{"discord_token": ""}

@@ -1,7 +1,5 @@
 import json
 import os.path
-import sys
-import time
 from threading import Lock
 
 
@@ -17,7 +15,7 @@ class JSONReaderWriter:
     def write(self, data):
         self.file_mutex.acquire()
         json_file = open(self.json_path, 'w')
-        json.dump(data, self.json_path, indent=4, sort_keys=True)
+        json.dump(data, json_file, indent=4, sort_keys=True)
         json_file.close()
         self.file_mutex.release()
 
