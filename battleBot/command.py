@@ -69,11 +69,26 @@ class Command:
         return formatted_string
     
     
+    def help (self): #TODO
+        pass
+        
+        
+    def train (self): #TODO
+        pass
+        
+    
+    def challenge_player(self): #TODO
+        pass
+    
+    
     #Dictionary of functions, allows for modularity in "run_command"
     command_list = {
         "register" : register_user,
         "stats" : get_stats,
-        "leaderboard" : get_leaderboard
+        "leaderboard" : get_leaderboard,
+        "help" : help,
+        "train" : train,
+        "challenge" : challenge_player
     }
     
     
