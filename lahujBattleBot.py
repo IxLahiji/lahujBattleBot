@@ -7,13 +7,7 @@ from battleBot.settings import JSONSettings
 from battleBot.stats import JSONStats
 from battleBot.command import Command
 from battleBot.timed_command import Timed_Command
-
-
-SUCCESS = 0
-NO_ARG_ERR = 1
-NO_PERM_ERR = 2
-NOT_COMMAND = 3
-INVALID_ARGUMENTS = 4
+from return_codes.py import *
 
 
 prog_path = os.path.dirname(os.path.abspath(__file__))
