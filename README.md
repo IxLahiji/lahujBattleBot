@@ -1,6 +1,6 @@
-# lahujDiscordBot
+# lahujBattleBot
 
-This project is a bot to manage battling between users in discord, created using the [discord.py](https://github.com/Rapptz/discord.py) discord API wrapper. This code is being developed in Python 3.5, and is incompatible with previous versions of Python.
+This project is a bot to manage battling between users in discord servers, created using the [discord.py](https://github.com/Rapptz/discord.py) discord API wrapper. This code is being developed in Python 3.5, and is incompatible with previous versions of Python.
 
 ## Features:
 
