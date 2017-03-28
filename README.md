@@ -8,7 +8,12 @@ This project is a bot to manage battling between users in discord servers, creat
 
 ## To-do:
   
-* 
+* Health (adding and subtracting, adding over time, adding from messages, etc.)
+* Training (gain xp at the sacrifice of health)
+* Challenging other players
+* Bot messages in channel, and in dm channels
+* Permissions
+
 
 ## Installation:
 
