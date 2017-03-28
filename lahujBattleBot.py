@@ -7,7 +7,7 @@ from battleBot.settings import JSONSettings
 from battleBot.stats import JSONStats
 from battleBot.command import Command
 from battleBot.timed_command import Timed_Command
-from return_codes.py import *
+from battleBot.return_codes import *
 
 
 prog_path = os.path.dirname(os.path.abspath(__file__))
