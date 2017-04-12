@@ -33,6 +33,7 @@ class JSONStats:
             
             print("A new empty stats file has been generated.")
 
+	
     def generate_player_stats(self, player):
         print ("Creating stats for new user " + player.name)
         self.parsed_stats[player.id] = {"ID": player.id,
@@ -49,19 +50,24 @@ class JSONStats:
         
         
     def set_stat(self, player, stat, value):
-        if (player.id in self.parsed_stats):
+        if (has_stats(player)):
             (self.parsed_stats[player.id]) [stat] = value
             self.stats.write(self.parsed_stats)
         else:
             generate_player_stats(player)
     
+	
+	def increment_health(self, player, amount):
+		if (has_stats(player)):
+			pass
     
+	
     def has_stats(self, player):
-        return (not (self.get_player_stats(player) is None))
+        return (not (self.get_player_stats(player.id) is None))
     
     
     def get_player_stats(self, player):
-        if (player.id in self.parsed_stats.keys()):
+        if (has_stats(player)):
             return self.parsed_stats[player.id]
         else:
             return None
