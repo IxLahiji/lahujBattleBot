@@ -57,10 +57,15 @@ class JSONStats:
             generate_player_stats(player)
     
 	
-	def increment_health(self, player, amount):
+	def increase_health(self, player, amount):
 		if (has_stats(player)):
 			pass
     
+	
+	def decrease_health(self, player, amount):
+		if (has_stats(player)):
+			pass
+	
 	
     def has_stats(self, player):
         return (not (self.get_player_stats(player.id) is None))
