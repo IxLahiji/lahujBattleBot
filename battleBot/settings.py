@@ -52,7 +52,7 @@ class JSONSettings:
     def get_setting(self, setting):
         #Check to make sure requested item is present
         if (not (setting in self.parsed_settings)):
-            print ("Invalid 'settings.JSON' file. Please delete the file, and restart application.")
+            print ("Error: Invalid settings file. Please either fix or delete the JSON file!")
             time.sleep(3)
             sys.exit()
         else:
