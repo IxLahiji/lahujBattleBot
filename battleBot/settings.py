@@ -36,8 +36,10 @@ class JSONSettings:
                                         "M. Defense": 1.0,
                                         "Experience": 0.0,
                                         "Experience Needed": 10.0},
-                                "Auto Regen Cooldown(h)":5,
-                                "Message Regen Cooldown(m)":10}
+                                "Auto Regen Cooldown(h)": 5,
+                                "Auto Regen Amount": 2.0,
+                                "Message Regen Cooldown(m)": 10,
+                                "Message Regen Amount": 0.1}
                        
             loaded_json = json.loads(default_json)
             self.settings.write(loaded_json)
