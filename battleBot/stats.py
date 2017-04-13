@@ -54,21 +54,37 @@ class JSONStats:
             (self.parsed_stats[player.id]) [stat] = value
             self.stats.write(self.parsed_stats)
         else:
-            generate_player_stats(player)
+            pass
     
-	
+    
+    def get_stat(self, player, stat):
+        if (has_stats(player)):
+            return (self.parsed_stats[player.id]) [stat]
+        else:
+            pass
+    
 	def increase_health(self, player, amount):
 		if (has_stats(player)):
-			pass
+			amount += get_stat(player, 'health')
+            if (amount > get_stat(player, 'Max Health')):
+                amount = 0
+			set_stat(player, 'health', amount)
+        else:
+            pass
     
 	
 	def decrease_health(self, player, amount):
 		if (has_stats(player)):
-			pass
+            amount -= get_stat(player, 'health')
+            if (amount < 0):
+                amount = 0
+			set_stat(player, 'health', amount)
+        else:
+            pass
 	
 	
     def has_stats(self, player):
-        return (not (self.get_player_stats(player.id) is None))
+        return (player.id in self.parsed_stats.keys())
     
     
     def get_player_stats(self, player):
