@@ -26,8 +26,19 @@ class JSONSettings:
         if not self.settings.exists():
             print("No settings file found. Generating a new settings JSON file...")
             #Defining keys for the JSON file, as well as configuring default values
-            default_json = """{"discord_token": ""}
-                       """
+            default_json = {"discord_token": "",
+                                "default_stats":{"Level": 1,
+                                        "Health": 10.0,
+                                        "Max Health": 10.0,
+                                        "Attack": 1.0,
+                                        "M. Attack": 1.0,
+                                        "Defense": 1.0,
+                                        "M. Defense": 1.0,
+                                        "Experience": 0.0,
+                                        "Experience Needed": 10.0},
+                                "Auto Regen Cooldown(h)":5,
+                                "Message Regen Cooldown(m)":10}
+                       
             loaded_json = json.loads(default_json)
             self.settings.write(loaded_json)
             
